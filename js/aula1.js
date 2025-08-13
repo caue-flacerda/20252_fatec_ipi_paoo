@@ -1,7 +1,52 @@
+function saudacoesFactory(saudacao, nome){
+    return function(){
+        console.log(`${saudacao}, ${nome}`)
+    }
+}
+let olaJoao = saudacoesFactory('ola', 'joao')
+let tchauJoao = saudacoesFactory('tchau', 'joao')
+olaJoao()
+tchauJoao()
+
+// function ola(){
+//     let nome = 'João'
+//     return function(){
+//         console.log(`Ola, ${nome}`)
+//     }
+// }
+// let olaResult = ola()
+
+// olaResult()
+// function f(){
+//     let nome = 'João'
+//     function g(){
+//         console.log(nome)
+//     }
+//     g()
+// }
+// f()
+
+
+//closures
+// let umaFuncao = function(){
+//     console.log('Fui armazenada em uma variável')
+// }
+// //umaFuncao()
+// function f(funcao){
+//     funcao()
+// }
+// //f(umaFuncao())
+// function g(){
+//     function outraFuncao(){
+//         console.log('Fui criada por g')
+//     }
+//     return outraFuncao
+// }
+
 // vetores, parte 2
-const valores = [1,2,3,4]
-const soma = valores.reduce((ac, v) => ac + v)
-console.log(soma)
+// const valores = [1,2,3,4]
+// const soma = valores.reduce((ac, v) => ac + v)
+// console.log(soma)
 // const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Alex', 'Cristina']
 // const numeros = [1,2,3] // [1,4,9]
 // const quadrado = numeros.map( n => n * n)
