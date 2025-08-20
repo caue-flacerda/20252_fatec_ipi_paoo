@@ -1,17 +1,154 @@
+//inferno de callbacks
+//callback hell
+const fs = require('fs')
+const abrirArquivo = function(nomeArquivo){
+    const exibirConteudo = function(erro, conteudo){
+        if(erro){
+            console.log(`Deu erro: ${erro}`)
+        }
+        else{
+            console.log(`Conteúdo: ${conteudo}`)
+            const dobro = Number(conteudo.toString()) * 2
+            const finalizar = function(erro){
+                if(erro){
+                    console.log(`Deu erro escrevendo o dobro: ${erro}`)
+                }else{
+                    console.log('A escrita do dobro deu certo')
+                }
+            }
+            fs.writeFile('dobro.txt', dobro.toString(), finalizar)
+            console.log('Fim da exibirConteudo...')
+        }
+    }
+    fs.readFile(nomeArquivo, exibirConteudo)
+    console.log('Fim da abrirArquivo...')
+}
+//chamar a função daqui a pouco
+abrirArquivo("arquivo.txt")
+// function demorada(tempo){
+//     const atualMaisTempo = new Date().getTime() + tempo
+//     while(new Date().getTime() <= atualMaisTempo);
+//     const d = 8 + 4
+//     return d
+// }
+// const a = 2 + 6
+// const b = 5 + 9
+// setTimeout(() => {
+//     const tempo = 2000
+//     const d = demorada(tempo)
+//     console.log(`d(${tempo}): ${d}`)
+// }, 0)
+// setTimeout(() => {
+//     const tempo = 1000
+//     const d = demorada(tempo)
+//     console.log(`d(${tempo}): ${d}`)
+// }, 0)
+// const e = 2 + a + b
+// console.log(`e: ${e}`)
+// const a = 2 + 7
+// const b = 5
+// console.log(a+b)
+
+// console.log('Eu primeiro...')
+// console.log('Agora eu...')
+// console.log('Sempre a última:(')
+
+// //uma concessionária com CNPJ e endereço, com logradouro, numero e bairro (pensar na estrutura que um bairro pode ter). Ela tem um estoque de veiculos. Cada um tem marca, modelo e ano de fabricação. Precisa pensar que o número de veículos que a concessionária tem pode variar ao longo do tempo, ele pode estar vazio, pode ter 15, pode ter 502 e assim por diante.
+
+// let calculadora = {
+//     soma: (a,b) => a + b,
+//     subtracao: function(a,b){
+//         return a - b
+//     }
+// }
+// // dados esses dois valores, aplicar todas as operações da calculadora sobre eles
+// let x = 2
+// let y = 3
+// for (let operacao of Object.values(calculadora)){
+//     //Antes de mostrar o resultado, mostrar o nome da função, interpolando em um único console.log ${}
+// console.log(`${operacao.name}: ${operacao(x,y)}`)
+// }
+// const concessionaria = {
+//     cnpj: '0011122210001-45',
+//     endereco: {
+//         logradouro: 'Rua A',
+//         numero: 120,
+//         bairro: {
+//             nome: 'Vila j',
+//             regiao: 'zona norte'
+//         }
+//     },
+//     veiculos:[
+//         {
+//             marca: 'Ford',
+//             modelo: 'Ka',
+//             anoDeFabricacao: 2015
+//         },
+//         {
+//             marca: 'Chevrolet',
+//             modelo: 'Onix',
+//             anoDeFabricacao: 2022
+//         }
+//     ]
+// }
+
+// const concessionaria = {
+//     cnpj: '0011122210001-45',
+//     endereco: {
+//         logradouro: 'Rua A',
+//         numero: 120,
+//         bairro: {
+//             nome: 'Vila j',
+//             regiao: 'zona norte'
+//         }
+//     },
+//     veiculos:{
+//         'Ford': [
+//             {
+//                 modelo: 'Ka',
+//                 anoDeFabricacao: 2015
+//             },
+//             {
+//                 modelo: 'Ecosport',
+//                 anoDeFabricacao: 2018
+//             }
+//         ],
+//         'chevrolet': [
+//             {
+//                 modelo: 'Onix',
+//                 anoDeFabricacao: 2025
+//             }
+//         ]
+//     }
+// }
+//     for(let marca of Object.keys(concessionaria.veiculos)){
+//         console.log(marca)
+//         const veiculosDaMarca = concessionaria.veiculos[marca]
+//         // console.log(veiculosDaMarca)
+//         for (let veiculo of veiculosDaMarca){
+//             console.log(veiculo.modelo)
+//         }
+//     }
+    // for(let veiculoFord of concessionaria.veiculos.Ford){
+    //     console.log(veiculoFord)
+    // }
+//escrever um for que, internamente, itera sobre cada possivel marca, para cada marca, mostrar somente o modelo do veiculo 
+// dica: pesquise sobre 'keys' em javascripts
+
 // objeto Javascript não é sinônimo de Objeto JSON (Javascript Object Notation), mas são parecidos
 //Uma pessoa se chama Maria, tem 21 anos e mora na Rua B, número 121
-let pessoa = {
-    nome: 'Maria',
-    idade: 21,
-    endereco:{
-        logradouro: 'Rua B',
-        numero: 121
-    }
-}
-console.log(pessoa.nome)
-console.log(pessoa['idade'])
-console.log(pessoa.endereco.logradouro)
-console.log(pessoa.endereco.numero)
+// let pessoa = {
+//     nome: 'Maria',
+//     idade: 21,
+//     endereco:{
+//         logradouro: 'Rua B',
+//         numero: 121
+//     }
+// }
+// console.log(pessoa.nome)
+// console.log(pessoa['idade'])
+// console.log(pessoa.endereco.logradouro)
+// console.log(pessoa.endereco.numero)
 
 
 
