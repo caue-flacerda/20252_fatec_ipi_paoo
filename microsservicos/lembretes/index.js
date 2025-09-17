@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-app.use(express.json)
+app.use(express.json())
 //GET serve para obter coisas do servidor
 //POST serve para cadastrar itens novos
 //PUT serve para atualizar itens existentes 
@@ -14,13 +14,18 @@ app.use(express.json)
         2: {id: 2, texto: 'Ir à feira'}
     }
 */
-let id = 1
+let id = 0
 const lembretes = {}
 //definindo um endpoint que permite que lembretes sejam cadastrados
 //POST /lembretes (req, res) => {}
 //metodo http / padrão de acesso/ funcionalidade
 app.post('/lembretes', (req, res) => {
-
+    id++
+    const texto = req.body.texto
+    // const lembrete = { id: id, texto: texto}
+    const lembrete = {id, texto}
+    lembretes[id] = lembrete
+    res.status(201).json(lembrete)
 })
 
 //definindo um endpoint que permite que a coleção de lembretes seja obtida
