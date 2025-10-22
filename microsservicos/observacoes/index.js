@@ -1,3 +1,4 @@
+const axios = require ('axios')
 const { v4: uuidv4 } = require('uuid')
 const express = require('express')
 const app = express()
@@ -24,6 +25,10 @@ app.post('/lembretes/:id/observacoes', (req, res) => {
     const observacoesDoLembrete = observacoesPorLembrete[lembreteId] || []
     observacoesDoLembrete.push({observacao})
     observacoesPorLembrete[lembreteId] = observacoesDoLembrete
+    axios.post('http://localhost:10000/eventos',{
+        type: 'ObservacaoCriada',
+        payload: observacao
+    })
     res.status(201).json(observacoesDoLembrete)
 
 })
