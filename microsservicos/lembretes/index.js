@@ -28,7 +28,7 @@ app.post('/lembretes', async function (req, res){
     lembretes[id] = lembrete
     await axios.post('http://localhost:10000/eventos',{
         type: 'LembreteCriado',
-        playload: lembrete
+        payload: lembrete
     })
     res.status(201).json(lembrete)
 })

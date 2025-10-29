@@ -23,7 +23,7 @@ res.json(baseConsolidada)
 })
 
 //recebe eventos, viabilizando a atualização da base
-app.post('/eventos', (req, res) => {})
+app.post('/eventos', (req, res) => {
     try{
         //pegar o evento do corpo da requsição e fazer esse ponteiro apontar pra ele 
         const evento = req.body
@@ -31,10 +31,12 @@ app.post('/eventos', (req, res) => {})
         // const type = evento.type
         // const payload = evento.payload
         const { type, payload } = evento
+        console.log(evento)
         //acessar o mapa de funções na posição type e chamar a função resultante entregando a ela, como parametro, o payload
         funcoes[type](payload)
     }
-    catch(e){}
+    catch(e){}})
+    
 
 const port = 6000
 app.listen(port, () => {console.log(`Consulta. Porta ${port}`)})
