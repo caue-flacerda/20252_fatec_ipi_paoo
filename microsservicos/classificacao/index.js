@@ -25,4 +25,14 @@ app.post('/eventos', (req, res) => {
     catch(e){}
 })
 const port = 7000
-app.listen(port, () => console.log(`classificação. Porta ${port}.`))
+app.listen(port, () => {
+    console.log(`classificação. Porta ${port}.`)
+    axios.get('http://localhost:10000/eventos').then(({data: eventos}) => {
+        for(let evento of eventos){
+            try{
+                funcoes[evento.type](evento.payload)
+            }
+            catch(e){}
+        }
+    })
+})
